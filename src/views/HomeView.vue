@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import {
-  computed,
-  onBeforeMount,
-  onBeforeUnmount,
-  onMounted,
-  onUnmounted,
-  reactive,
-  watch,
-} from 'vue'
+/*
+  imports
+*/
+import { computed, reactive, watch, onMounted } from 'vue'
 
+/*
+  title
+*/
 const title = 'Vue Counter'
 
+onMounted(() => {
+  console.log('Do stuff related to title')
+})
+
+/*
+  counter
+*/
 const counterData = reactive({
   count: 0,
   title: 'Counter',
@@ -35,20 +40,8 @@ const increaseCounter = (amount: number, event: Event): number => {
 
 const decreaseCounter = (amount: number): number => (counterData.count -= amount)
 
-onBeforeMount(() => {
-  console.log('Component is about to mount')
-})
-
 onMounted(() => {
-  console.log('Component is mounted')
-})
-
-onBeforeUnmount(() => {
-  console.log('onBeforeUnmount')
-})
-
-onUnmounted(() => {
-  console.log('onUnmounted')
+  console.log('Do stuff related to Counter')
 })
 </script>
 
@@ -56,9 +49,11 @@ onUnmounted(() => {
   <div class="home">
     <div>
       <h1>{{ title }}</h1>
-      <button class="btn" @click="decreaseCounter(1)">-</button>
+      <button class="btn border bg-gray-100 rounded-lg" @click="decreaseCounter(1)">-</button>
       <span class="counter">{{ counterData.count }}</span>
-      <button class="btn" @click="increaseCounter(1, $event)">+</button>
+      <button class="btn border bg-gray-100 rounded-lg" @click="increaseCounter(1, $event)">
+        +
+      </button>
     </div>
 
     <p>
@@ -67,7 +62,7 @@ onUnmounted(() => {
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" type="text" class="border border-gray-500 rounded-lg" />
     </div>
   </div>
 </template>

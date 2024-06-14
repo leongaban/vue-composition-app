@@ -6,42 +6,22 @@
     <RouterLink to="/about">About</RouterLink>
   </nav>
 
+  <section
+    class="bg-green-400 flex items-center justify-center text-center text-3xl p-12 md:p-14 lg:p-16 xl:p-20"
+  >
+    <h1 class="text-5xl">Leon Gaban</h1>
+    <p class="text-black">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum iste debitis eaque in
+      repudiandae natus porro maxime quas molestiae voluptate inventore nobis eos, rerum sed dolore
+      earum quasi sapiente odio.
+    </p>
+  </section>
+
   <RouterView />
+
+  <!-- <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view> -->
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-</style>
