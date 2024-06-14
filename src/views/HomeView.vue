@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { computed, reactive, watch } from 'vue'
+import {
+  computed,
+  onBeforeMount,
+  onBeforeUnmount,
+  onMounted,
+  onUnmounted,
+  reactive,
+  watch,
+} from 'vue'
 
 const title = 'Vue Counter'
 
@@ -26,6 +34,22 @@ const increaseCounter = (amount: number, event: Event): number => {
 }
 
 const decreaseCounter = (amount: number): number => (counterData.count -= amount)
+
+onBeforeMount(() => {
+  console.log('Component is about to mount')
+})
+
+onMounted(() => {
+  console.log('Component is mounted')
+})
+
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount')
+})
+
+onUnmounted(() => {
+  console.log('onUnmounted')
+})
 </script>
 
 <template>
