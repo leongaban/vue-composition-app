@@ -3,6 +3,7 @@
   imports
 */
 import { computed, reactive, watch, onMounted } from 'vue'
+import { vAutoFocus } from '@/directives/v-auto-focus'
 
 /*
   title
@@ -62,7 +63,12 @@ onMounted(() => {
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" class="border border-gray-500 rounded-lg" />
+      <input
+        v-model="counterData.title"
+        v-auto-focus
+        type="text"
+        class="border border-gray-500 rounded-lg"
+      />
     </div>
   </div>
 </template>
