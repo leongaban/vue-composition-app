@@ -1,22 +1,15 @@
 <script setup lang="ts">
-/*
-  imports
-*/
-import { computed, reactive, watch, onMounted } from 'vue'
+import { computed, ref, reactive, watch, onMounted, nextTick } from 'vue'
 import { vAutoFocus } from '@/directives/v-auto-focus'
 
-/*
-  title
-*/
 const title = 'Vue Counter'
+
+const titleRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   console.log('Do stuff related to title')
 })
 
-/*
-  counter
-*/
 const counterData = reactive({
   count: 0,
   title: 'Counter',
@@ -34,27 +27,32 @@ const oddOrEven = computed(() => {
   return counterData.count % 2 === 0 ? 'even' : 'odd'
 })
 
-const increaseCounter = (amount: number, event: Event): number => {
+const increaseCounter = async (amount: number, event: Event) => {
   // console.log(event)
-  return (counterData.count += amount)
+  counterData.count += amount
+
+  await nextTick()
+  console.log('DOM updated')
 }
 
 const decreaseCounter = (amount: number): number => (counterData.count -= amount)
 
+const btnClass = 'border bg-gray-100 rounded-lg p-3'
+
 onMounted(() => {
-  console.log('Do stuff related to Counter')
+  if (titleRef.value) {
+    console.log(titleRef.value.offsetWidth)
+  }
 })
 </script>
 
 <template>
   <div class="home">
     <div>
-      <h1>{{ title }}</h1>
-      <button class="btn border bg-gray-100 rounded-lg" @click="decreaseCounter(1)">-</button>
+      <h1 ref="titleRef">{{ title }}</h1>
+      <button :class="btnClass" @click="decreaseCounter(1)">-</button>
       <span class="counter">{{ counterData.count }}</span>
-      <button class="btn border bg-gray-100 rounded-lg" @click="increaseCounter(1, $event)">
-        +
-      </button>
+      <button :class="btnClass" @click="increaseCounter(1, $event)">+</button>
     </div>
 
     <p>
