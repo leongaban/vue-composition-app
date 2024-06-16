@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps, defineEmits, useSlots } from 'vue'
 import { modalStyle } from '@/styles/tailwindStyles'
 
 const props = defineProps({
