@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const sectionClass =
-  'bg-green-400 flex items-center justify-center text-center text-3xl p-12 md:p-14 lg:p-16 xl:p-20'
+import { sectionClass } from '@/styles/tailwindStyles'
 </script>
 
 <template>
