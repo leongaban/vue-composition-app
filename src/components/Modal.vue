@@ -1,4 +1,5 @@
 <script setup>
+import { inject } from 'vue'
 import { modalStyle } from '@/styles/tailwindStyles'
 
 const props = defineProps({
@@ -17,8 +18,7 @@ const handleCloseModal = () => {
   emit('update:modelValue', false)
 }
 
-// const slots = useSlots()
-// console.log(slots.title()) // slots.title()[0].children
+const userData = inject('userData')
 </script>
 
 <template>
@@ -28,6 +28,7 @@ const handleCloseModal = () => {
       <h1>{{ props.title }}</h1>
       <slot />
       <button :class="btnStyle" @click="handleCloseModal">Hide modal</button>
+      <div>Username is: {{ userData.username }}</div>
     </div>
   </teleport>
 </template>
