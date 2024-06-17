@@ -25,6 +25,13 @@ const userData = inject('userData')
   <teleport to="#modals-container">
     <div v-if="modelValue" :class="modalStyle">
       <!-- <h1><slot name="title" /></h1> -->
+      <!-- <pre>
+        <div v-for="(value, key) in slots.title()[0]" :key="key">
+          <strong>{{ key.toString() }}:</strong>
+          {{ value ? value.toString() : "null" }}
+        </div>
+      </pre> -->
+
       <h1>{{ props.title }}</h1>
       <slot />
       <button :class="btnStyle" @click="handleCloseModal">Hide modal</button>
