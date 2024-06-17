@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useCounterStore } from '@/stores/counter'
 import { vAutoFocus } from '@/directives/v-auto-focus'
-import { useCounter } from '@/use/useCounter'
+
+const counter = useCounterStore()
 
 const posts = ref([
   { id: 'id1', title: 'Post 1' },
   { id: 'id2', title: 'Post 2' },
   { id: 'id3', title: 'Post 3' },
 ])
-
-const { counterData, increaseCounter, oddOrEven } = useCounter()
 </script>
 
 <template>
@@ -33,11 +33,11 @@ const { counterData, increaseCounter, oddOrEven } = useCounter()
 
     <div>
       <button
-        @click="increaseCounter(1, $event)"
+        @click="counter.increaseCounter()"
         class="p-3 border border-black bg-pink-300 w-56 text-4xl"
-        :class="{ 'bg-pink-500': counterData.count % 2 === 0 }"
+        :class="{ 'bg-pink-500': counter.oddOrEven === 'odd' }"
       >
-        {{ counterData.count }}
+        {{ counter.count }}
       </button>
     </div>
   </div>

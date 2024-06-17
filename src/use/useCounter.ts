@@ -19,7 +19,6 @@ export function useCounter() {
   )
 
   const increaseCounter = async (amount: number, event: Event) => {
-    // console.log(event)
     counterData.count += amount
     // await nextTick()
     // console.log('DOM updated')
