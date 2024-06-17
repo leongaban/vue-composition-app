@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { sectionClass } from '@/styles/tailwindStyles'
+import { useOnline } from '@vueuse/core'
 import { reactive, provide } from 'vue'
+import { sectionClass } from '@/styles/tailwindStyles'
 
 const userData = reactive({
   name: 'Leon Gaban',
@@ -9,12 +10,16 @@ const userData = reactive({
 })
 
 provide('userData', userData)
+
+const online = useOnline()
 </script>
 
 <template>
   <div class="user-data absolute bg-slate-100 top-0 right-0 p-2">
-    {{ userData.name }}
-    @{{ userData.username }}
+    @{{ userData.username }} | Network Status:
+    <span :class="online ? 'text-green-500' : 'text-red-500'">
+      {{ online ? 'Online' : 'Offline' }}
+    </span>
   </div>
   <nav>
     <RouterLink to="/">Home</RouterLink>

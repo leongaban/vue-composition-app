@@ -1,11 +1,11 @@
 import { computed, reactive, watch, nextTick } from 'vue'
 
-export function useCounter() {
-  const counterData = reactive({
-    count: 0,
-    title: 'Counter',
-  })
+const counterData = reactive({
+  count: 0,
+  title: 'Counter',
+})
 
+export function useCounter() {
   // prettier-ignore
   watch(() => counterData.count, (count: number, prevCount: number) => {
     console.log(`Count changed from ${prevCount} to ${count}`)
